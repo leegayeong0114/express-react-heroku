@@ -1,11 +1,10 @@
 const { createProxyMiddleware } = require('http-proxy-middleware')
-const dotenv = require('dotenv')
-dotenv.config()
 
 module.exports = (app) => {
+  console.log(process.env.PROXY)
   app.use(
     createProxyMiddleware('/api/data', {
-      target: process.env.PROXY || 'http://localhost:5000',
+      target: 'http://localhost:5000',
       changeOrigin: true,
     })
   )

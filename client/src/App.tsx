@@ -11,7 +11,7 @@ function App() {
 
 const getApiData = () => {
   axios
-    .get('/api/data')
+    .get('/api/data',)
     .then(res => {
       console.log(res)
     })

@@ -8,7 +8,11 @@ const PORT = process.env.PORT || 5000
 
 const path = require('path')
 
-app.use('/api/data', (req, res) => res.json({data: 'data', port: PORT}))
+app.get('/api/data', (req, res) => {
+  res.json('/api/data')
+})
+
+app.use('/test', require('./routes/TestRoute'))
 
 // 정적 파일 제공
 app.use(express.static(path.join(__dirname, 'client/build')))
@@ -16,7 +20,6 @@ app.use(express.static(path.join(__dirname, 'client/build')))
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'))
 })
-
 
 app.listen(PORT, () => {
   console.log(`server running port : ${PORT}!!`)

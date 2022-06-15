@@ -6,6 +6,8 @@ dotenv.config()
 
 const PORT = process.env.PORT || 5000
 
+app.get('/', (req, res) => {res.send('Server Response Success!')})
+
 app.get('/api/data', (req, res) => res.json({data: 'data'}))
 
 app.listen(PORT, () => {
